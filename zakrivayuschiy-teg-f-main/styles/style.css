@@ -1,0 +1,432 @@
+/* Здесь вы напишете основную часть стилей страницы.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+*/
+
+.page {
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+  font-family: var(--base-font), sans-serif;
+  font-variation-settings: "wght" var(--base-weight);
+  background-image: 
+  repeating-linear-gradient(90deg, #d3d3d3, transparent 2px),
+  repeating-linear-gradient(#d3d3d3, transparent 2px),
+  repeating-linear-gradient(#e7e7e7 0% 0.01%, #1a1a1a 2px);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.position_header {
+  width: clamp(375px,80vw,700px);
+  height: clamp(327px,80vw,368px);
+}
+
+.header_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: solid rgb(0, 0, 0) 2px;
+  margin-block: clamp(98px,40%,100px);
+}
+
+.title_header {
+  font-family: var(--heavy-font), sans-serif;
+  font-weight: var(--heavy-weight);
+  font-size: clamp(49px,12vw,65px);
+}
+
+.bottom_title_header {
+  font-family: var(--heavy-font), sans-serif;
+  font-weight: var(--heavy-weight);
+  font-size: clamp(14px,3vw,23px);
+  text-transform: uppercase;
+}
+
+.header_window {
+ position: fixed;
+ width: clamp(341px,50dvb,353px);
+ height: 191px;
+ border: solid rgb(0, 0, 0) 2px;
+ background-color: white;
+}
+
+.window_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-block: 12px;
+}
+
+.position_window {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 30px;
+}
+
+.window_text {
+  text-transform: uppercase;
+  line-height: 150%;
+}
+
+.close {
+  border: solid rgb(0, 0, 0) 2px; 
+  background-color: #FFFFFF;
+  width: clamp(261px, 60vw, 293px);
+  height: 38px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.close::before {
+  content: '';
+  background-color: transparent;
+  width: clamp(261px, 60vw, 293px);
+  height: 38px;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-in-out;
+  left: 28px;
+  bottom: 29px;
+}
+
+.close:hover::before {
+  background-color: rgb(0, 0, 0);
+  transform: scaleX(1);
+}
+
+.close:focus {
+  box-shadow: 2px 2px rgb(0, 0, 0);
+}
+
+.header_window[open]::backdrop {
+  background-color: rgb(0 0 0 / 75%);
+}
+
+.disk_window {
+  width: 39px;
+  height: 39px;
+  mix-blend-mode: difference;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: solid black 2px;
+  overflow: hidden;
+}
+
+.position {
+  width: clamp(375px,80vw,700px);
+}
+
+.card_title_block {
+  width: clamp(375px,80vw,696px);
+  height: 30px;
+  border-bottom: solid rgb(0, 0, 0) 2px;
+  padding-top: 4px;
+}
+
+.title {
+  font-variation-settings: "wght" var(--title-weight);
+  font-size: var(--base-size);
+  margin: 0px 10px 0px 10px;
+}
+
+.card__image {
+  width: clamp(371px, 90vw, 696px);
+  height: clamp(371px, 100vw, 696px);
+  object-fit: cover;
+  object-position: right;
+  border-bottom: solid rgb(0, 0, 0) 2px;
+}
+
+.filter_silver {
+  filter: sepia(50%)  grayscale(0.6) ;
+}
+
+.filter_bright {
+  filter: brightness(250%);
+}
+
+.filter_scarlet {
+  filter: hue-rotate(-340deg);
+}
+
+.filter_green {
+  filter: invert(0.9);
+}
+
+.filter_black {
+  filter: grayscale(0.9) sepia(80%);
+}
+
+.filter_blur {
+  filter: blur(3px);
+}
+
+.filter_pink {
+  filter: hue-rotate(-290deg) opacity(0.7) blur(2px);
+}
+
+.lable {
+  position: absolute; 
+  opacity: 50%;
+  -webkit-text-stroke: 0.8px #FFFFFF;
+  mix-blend-mode: hard-light;
+  font-family: var(--heavy-font), sans-serif;
+  font-weight: var(--heavy-weigh);
+  font-size: 14px;
+  padding: 25px 25px 0 clamp(248px, 60%, 573px);
+  z-index: 2;
+}
+
+.card_text {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--base-size);
+  gap: 25px;
+  margin: 23px 25px 25px 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+
+.card__icon-button {
+  background-color: #FFFFFF;
+  border: none;
+  outline: none;
+  height: 38px;
+  margin-bottom: 2px;
+}
+
+.card__like-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 38px;
+  border: solid rgb(0, 0, 0) 2px; 
+  background-color: #FFFFFF;
+}
+
+.card__like-button::before {
+  content: '';
+  background-color: transparent;
+  width: 130px;
+  height: 38px;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-in-out;
+}
+
+.card__like-button:hover::before {
+  background-color: rgb(0, 0, 0);
+  transform: scaleX(1);
+}
+
+.card__like-button:focus {
+  box-shadow: 2px 2px rgb(0, 0, 0);
+  outline: none;
+}
+
+.like-icon.is-liked {
+  transform-origin: center;
+  animation: scale_animation 0.3s ease-in 0.1s;
+}
+
+.like-icon {
+  width: 42px;
+  height: 38px;
+  border: solid transparent 2px;
+  outline: none;
+}
+
+.like-icon:hover .core {
+  fill: rgb(0, 0, 0);
+  transition: fill linear 0.3s 0.03;
+}
+
+.like-icon:hover .main-body {
+  fill: rgb(0, 0, 0);
+  transition: fill linear 0.3s 0.05s;
+}
+
+.like-icon:active .core {
+  fill: rgb(255, 0, 0);
+  transition: fill linear 0.3s 0.03;
+}
+
+.like-icon:active .main-body {
+  fill: rgb(255, 0, 0);
+  transition: fill linear 0.3s 0.05s;
+}
+
+.like-icon.is-liked .core{
+  fill: rgb(255, 0, 0);
+  transition: fill linear 0.3s;
+}
+
+.like-icon.is-liked .main-body{
+  fill: rgb(255, 0, 0);
+  transition: fill linear 0.3s 0.05s;
+}
+
+.like-icon.is-liked .contour{
+  fill: rgb(255, 0, 0);
+  transition: fill linear 0.3s 0.06s;
+}
+
+.like-icon.is-liked .sparks {
+  fill: rgb(255, 0, 0);
+  animation: opacity_animation  0.3s ease-in 0.3s;
+}
+
+.like-icon:focus-visible {
+  border: solid rgb(0, 0, 0) 2px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.core {
+  fill: var(--core-color);
+  transition: fill linear 0.3s 0.03;
+}
+
+.main-body {
+  fill: var(--main-body-color);
+  transition: fill linear 0.3s;
+}
+
+.contour  {
+  transition: fill linear 0.1s;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.footer_block {
+  width: clamp(306,50vw,335px);
+  height: clamp(55px,100vw,86px);
+}
+
+.footer_buttom {
+  width: clamp(306px,80vw,335px);
+  height: 55px;
+  border: solid rgb(0, 0, 0) 2px;
+  background-color: #FFFFFF;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  outline: none;
+  transition: 0.3s ease;
+ }
+
+ .footer_buttom::before {
+  content: '';
+  background-color: transparent;
+  width: clamp(306px,80vw,335px);
+  height: 55px;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-in-out;
+ }
+
+ .footer_buttom:hover::before {
+  background-color: rgb(0, 0, 0);
+  transform: scaleX(1);
+}
+
+ .footer_buttom:focus {
+  box-shadow: 2px 2px rgb(0, 0, 0);
+ }
+
+ .disk {
+  width: 21px;
+  height: 21px;
+  mix-blend-mode: difference;
+}
+
+.button__text {
+  position: relative;
+  font-family: var(--heavy-font), sans-serif;
+  font-weight: var(--heavy-weigh);
+  font-size: 14px;
+  mix-blend-mode: difference;
+  color: #FFFFFF;
+}
+
+@supports (text-stroke: 0.3px #FFFFFF) {
+  .lable {
+    text-shadow: 1px 1px #FFFFFF;
+  }
+} 
+
+@media  (width <= 375px) {
+
+  .lines {
+    height: 52px;
+  }
+
+  .card_text_mobile {
+    margin-right: 30px;
+    margin-bottom: 22px;
+  }
+
+  .footer_buttom {
+    height: 86px;
+    flex-direction: column;
+   }
+
+   .footer_buttom::before {
+    height: 86px;
+   }
+
+   .close::before {
+    left: 34px;
+   }
+  }
+
+
+
+
+
+
+
+
+
+
+
