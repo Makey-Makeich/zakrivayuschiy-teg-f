@@ -61,6 +61,7 @@
  width: clamp(341px,50dvb,353px);
  border: solid rgb(0, 0, 0) 2px;
  background-color: white;
+ padding: 23px 12px 25px 12px;
 }
 
 .window_block {
@@ -68,7 +69,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
 }
 
 .position_window {
@@ -86,36 +87,37 @@
 }
 
 .close {
-  background-color: #FFFFFF;
   width: clamp(261px, 60vw, 293px);
   height: 38px;
-  outline: none;
-  transition: 0.3s ease;
-  border: solid rgb(0, 0, 0) 2px; 
-  overflow: hidden;
 }
 
-.close::before {
-  width: clamp(261px, 60vw, 293px);
-  height: 38px;
-  left: 28px;
-  bottom: 16px;
+.button_element {
+  position: relative;
+  transition: 0.3s ease;
+  border: solid rgb(0, 0, 0) 2px;
+  background-color: #FFFFFF;
+  outline: none;
+  overflow: hidden;
 }
 
 .button_element::before {
   content: '';
   position: absolute;
-  transform: scaleX(0);
+  left: -100%;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  transform: translateX(0%);
   transform-origin: left;
   transition: 0.5s ease-in-out;
   background-color: rgb(0, 0, 0);
 }
 
 .button_element:hover::before {
-  transform: scaleX(1);
+ transform: translateX(100%);
 }
 
-.button_element:focus {
+.button_element:focus-visible {
   box-shadow: 2px 2px rgb(0, 0, 0);
   outline: none;
 }
@@ -154,15 +156,19 @@
 
 .card_title_block {
   width: clamp(375px,80vw,696px);
-  height: 30px;
   border-bottom: solid rgb(0, 0, 0) 2px;
-  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-top: 5px;
 }
 
 .title {
   font-variation-settings: "wght" var(--title-weight);
   font-size: var(--base-size);
   margin: 0px 10px 0px 10px;
+}
+
+.block_image {
+  position: relative;
 }
 
 .card__image {
@@ -203,14 +209,15 @@
 
 .lable {
   position: absolute; 
-  left: 25.2vw;
+  left: 25px;
+  top: 5px;
   opacity: 50%;
   text-shadow: 1px 1px #FFFFFF;
   mix-blend-mode: hard-light;
   font-family: var(--heavy-font), fantasy;
   font-weight: var(--heavy-weigh);
   font-size: 14px;
-  padding: 25px 25px 0 clamp(248px, 60%, 573px);
+  padding: 20px 25px 0 clamp(224px, 50vw, 550px);
   z-index: 2;
 }
 
@@ -219,7 +226,7 @@
   flex-direction: column;
   font-size: var(--base-size);
   gap: 25px;
-  margin: 24.5px 25px 25px 25px;
+  margin: 22.5px 25px 25px 25px;
   padding-inline-end: 14px;
 }
 
@@ -241,15 +248,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  height: 38px;
-  border: solid rgb(0, 0, 0) 2px; 
-  background-color: #FFFFFF;
-  transition: 0.3s ease;
-}
-
-.card__like-button::before {
-  left: 63vw;
   width: 130px;
   height: 38px;
 }
@@ -274,18 +272,18 @@
 }
 
 .like-icon {
-  width: 27px;
-  height: 24px;
+  width: 38px;
+  height: 38px;
 }
 
-.like-icon .is-liked {
+.like-icon.is-liked {
   transform-origin: center;
   animation: scale_animation 0.3s ease-in 0.1s;
 }
   
 .like-icon:hover .core {
   fill: rgb(0, 0, 0);
-  transition: fill linear 0.3s 0.03;
+  transition: fill linear 0.3s 0.03s;
 }
 
 .like-icon:hover .main-body {
@@ -295,7 +293,7 @@
 
 .like-icon:active .core {
   fill: rgb(255, 0, 0);
-  transition: fill linear 0.3s 0.03;
+  transition: fill linear 0.3s 0.03s;
 }
 
 .like-icon:active .main-body {
@@ -330,7 +328,7 @@
 
 .core {
   fill: var(--core-color);
-  transition: fill linear 0.3s 0.03;
+  transition: fill linear 0.3s 0.03s;
 }
 
 .main-body {
@@ -347,28 +345,18 @@
 }
 
 .footer_block {
-  width: clamp(306,50vw,335px);
+  width: clamp(306px,50vw,335px);
   height: clamp(55px,100vw,86px);
 }
 
 .footer_buttom {
-  width: clamp(306px,80vw,335px);
+  width: clamp(306px,80vw,335px);;
   height: 55px;
-  border: solid rgb(0, 0, 0) 2px;
-  background-color: #FFFFFF;
-  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  outline: none;
-  transition: 0.3s ease;
- }
- 
- .footer_buttom::before {
-  width: clamp(306px,80vw,335px);
-  left: 38vw;
-  height: 55px;
+  margin-bottom: 100px;
  }
 
  .disk {
@@ -395,35 +383,33 @@
 } 
 
 @media  (width <= 375px) {
-  .lines {
-    min-height: 52px;
-  }
-
-  .lable {
-    left: 4px;
-  }
-
-  .card__like-button::before {
-    left: 58vw;
+  .header_window {
+    padding: 23px 19px 25px 19px;;
   }
 
   .card_text {
-    margin-top: 21px;
+    margin-top: 19px;
     padding-inline-end: 5px;
   }
 
   .footer_buttom {
-    height: 86px;
+    height: 84px;
     flex-direction: column;
    }
 
-   .footer_buttom::before {
-    height: 86px;
-    left: 9.8vw;
-   }
-
-   .close::before {
-    left: 34px;
-   }
+  .disk {
+    width: 28px;
+    height: 28px;
   }
+}
+
+
+
+
+
+
+
+
+
+
 
